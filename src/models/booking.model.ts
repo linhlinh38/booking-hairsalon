@@ -47,7 +47,13 @@ const bookingSchema = mongoose.Schema(
     },
     court: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Court'
+      ref: 'Court',
+      required: false
+    },
+    branch: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Branch',
+      required: true
     }
   },
   {

@@ -3,7 +3,8 @@ export enum RoleEnum {
   ADMIN = 'Admin',
   OPERATOR = 'Operator',
   MANAGER = 'Manager',
-  STAFF = 'Staff'
+  STAFF = 'Staff',
+  STYLIST = 'Stylist'
 }
 
 export enum GenderEnum {
@@ -51,6 +52,12 @@ export enum BranchStatusEnum {
 }
 
 export enum CourtStatusEnum {
+  PENDING = 'Pending',
+  INUSE = 'Inuse',
+  TERMINATION = 'Termination'
+}
+
+export enum ServiceStatusEnum {
   PENDING = 'Pending',
   INUSE = 'Inuse',
   TERMINATION = 'Termination'

@@ -1,5 +1,6 @@
 import { IBooking } from './booking.interface';
 import { ICourt } from './court.interface';
+import { IStylist } from './stylist.interface';
 
 export interface ISchedule {
   _id?: string;
@@ -10,5 +11,6 @@ export interface ISchedule {
   date: string;
   booking?: string | IBooking;
   court: string | ICourt;
+  stylist: string | IStylist;
   status: string;
 }

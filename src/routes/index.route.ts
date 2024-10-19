@@ -18,6 +18,8 @@ import transactionRoute from './transaction.route';
 import slotRoute from './slot.route';
 import operatorRoute from './operator.route';
 import feedbackRouter from './feedback.route';
+import serviceRouter from './service.route';
+import stylistRouter from './stylist.route';
 
 const router = express.Router();
 
@@ -40,5 +42,7 @@ router.use('/transaction', transactionRoute);
 router.use('/slot', slotRoute);
 router.use('/operator', operatorRoute);
 router.use('/feedback', feedbackRouter);
+router.use('/service', serviceRouter);
+router.use('/stylist', stylistRouter);
 
 export default router;

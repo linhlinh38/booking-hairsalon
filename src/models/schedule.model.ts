@@ -38,6 +38,16 @@ const scheduleSchema = mongoose.Schema(
     court: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Court',
+      required: false
+    },
+    stylist: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Stylist',
+      required: true
+    },
+    service: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Service',
       required: true
     }
   },
