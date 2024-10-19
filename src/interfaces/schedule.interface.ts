@@ -13,6 +13,6 @@ export interface ISchedule {
   booking?: string | IBooking;
   court?: string | ICourt;
   stylist: string | IStylist;
-  service: string[] | IService[];
+  services: string[] | IService[];
   status: string;
 }

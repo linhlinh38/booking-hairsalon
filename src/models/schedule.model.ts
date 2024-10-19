@@ -45,11 +45,13 @@ const scheduleSchema = mongoose.Schema(
       ref: 'Stylist',
       required: true
     },
-    service: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Service',
-      required: true
-    }
+    services: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service',
+        required: true
+      }
+    ]
   },
   {
     timestamps: true

@@ -23,5 +23,5 @@ const stylistSchema = mongoose.Schema(
   }
 );
 stylistSchema.add(userModel.schema);
-const stylistModel = mongoose.discriminator('Stylist', stylistSchema);
+const stylistModel = userModel.discriminator('Stylist', stylistSchema);
 export default stylistModel;

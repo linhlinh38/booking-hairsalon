@@ -142,6 +142,8 @@ async function createSchedule(
       date: req.body.date,
       booking: req.body.booking,
       court: req.body.court,
+      stylist: req.body.stylist,
+      services: req.body.services,
       status: ScheduleStatusEnum.AVAILABLE
     };
 
