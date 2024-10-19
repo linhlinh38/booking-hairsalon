@@ -12,7 +12,6 @@ async function getBranchService(
   next: NextFunction
 ) {
   try {
-    const branchId = req.params.branchId;
     const service = await serviceSalonService.getAll();
     return res
       .status(200)
