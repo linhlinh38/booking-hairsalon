@@ -9,10 +9,10 @@ async function getStylistForBooking(
   next: NextFunction
 ) {
   try {
-    const { branchId, serviceId, slots, date } = req.body;
+    const { branchId, slots, date } = req.body;
     const stylist = await stylistService.getStylistForBooking(
       branchId,
-      serviceId,
+      //serviceId,
       slots,
       date
     );

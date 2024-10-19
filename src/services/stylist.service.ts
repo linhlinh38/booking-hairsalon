@@ -26,7 +26,7 @@ class StylistService extends BaseService<IStylist> {
 
   async getStylistForBooking(
     branchId: string,
-    serviceId: string,
+    // serviceId: string,
     slots: string[],
     date: Date
   ) {
@@ -42,8 +42,8 @@ class StylistService extends BaseService<IStylist> {
     const stylists = await stylistModel
       .find({
         _id: { $nin: [...stylist] },
-        branch: branchId,
-        services: { $elemMatch: { _id: serviceId } }
+        branch: branchId
+        //services: { $all: [...services] }
       })
       .populate('branch services');
     if (!stylists) throw new BadRequestError('stylists null');

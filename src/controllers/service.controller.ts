@@ -13,7 +13,7 @@ async function getBranchService(
 ) {
   try {
     const branchId = req.params.branchId;
-    const service = await serviceSalonService.getBranchService(branchId);
+    const service = await serviceSalonService.getAll();
     return res
       .status(200)
       .json({ message: 'Get service Successfully', data: service });
@@ -23,7 +23,7 @@ async function getBranchService(
 }
 
 async function create(req: Request, res: Response, next: NextFunction) {
-  const { name, type, duration, price, images, description, branch } = req.body;
+  const { name, type, duration, price, images, description } = req.body;
   const servicetDTO: IService = {
     name,
     type,
@@ -31,7 +31,6 @@ async function create(req: Request, res: Response, next: NextFunction) {
     price,
     images,
     status: ServiceStatusEnum.INUSE,
-    branch,
     description
   };
 

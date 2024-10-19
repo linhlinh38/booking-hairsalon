@@ -1,3 +1,4 @@
+import { IBranch } from './branch.interface';
 import { ICourt } from './court.interface';
 import { IUser } from './user.interface';
 
@@ -11,7 +12,8 @@ export interface IBooking {
   startDate: string;
   endDate: string;
   status: string;
-  court: string | ICourt;
+  court?: string | ICourt;
+  branch: string | IBranch;
   imageQR?: Express.Multer.File | string;
   customer?: string | IUser;
   createdAt?: string;

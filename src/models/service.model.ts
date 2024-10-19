@@ -32,11 +32,6 @@ const serviceSchema = mongoose.Schema(
       type: String,
       required: true,
       enum: Object.values(ServiceStatusEnum)
-    },
-    branch: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Branch',
-      required: true
     }
   },
   {

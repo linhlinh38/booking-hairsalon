@@ -9,5 +9,4 @@ export interface IService {
   images?: Express.Multer.File[] | string[];
   description: string;
   status: string;
-  branch?: string | IBranch;
 }
