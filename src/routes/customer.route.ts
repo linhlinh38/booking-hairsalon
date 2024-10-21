@@ -10,7 +10,7 @@ import { RoleEnum } from '../utils/enums';
 const customerRoute = express.Router();
 customerRoute.post(
   '/create',
-  validate(createUserSchema),
+  //validate(createUserSchema),
   customerController.createCustomer
 );
 

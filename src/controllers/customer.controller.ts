@@ -22,6 +22,8 @@ async function createCustomer(req: Request, res: Response, next: NextFunction) {
     status: UserStatusEnum.ACTIVE
   };
   try {
+    console.log('email: ', typeof req.body.email);
+
     const key: Partial<IUser> = {
       email: req.body.email
     };
