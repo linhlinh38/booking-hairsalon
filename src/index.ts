@@ -54,7 +54,7 @@ const StartServer = () => {
   );
 
   //Routes
-  app.use('/pickle-play', router);
+  app.use('/hair-salon', router);
 
   app.use(errorHandler);
 
