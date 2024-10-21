@@ -78,7 +78,7 @@ class BookingService extends BaseService<IBooking> {
       totalHour: booking.totalHour,
       startDate: booking.startDate,
       endDate: booking.endDate,
-      //court: booking.court,
+      court: booking.court,
       branch: booking.branch,
       status: BookingStatusEnum.PENDING,
       customer: loginUser
@@ -114,7 +114,7 @@ class BookingService extends BaseService<IBooking> {
           booking: booking._id,
           court: schedule.court,
           stylist: schedule.stylist,
-          services: schedule.services,
+          // services: schedule.services,
           status: ScheduleStatusEnum.PENDING
         };
         await scheduleService.create(newSchedule);

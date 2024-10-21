@@ -18,7 +18,7 @@ async function getScheduleByCourt(
 ) {
   try {
     const key: Partial<ISchedule> = {
-      court: req.params.court as string
+      court: req.params.court
     };
     const schedule = await scheduleService.getScheduleWithPopulateInfo(key);
     if (schedule.length === 0) {
