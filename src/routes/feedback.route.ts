@@ -9,6 +9,10 @@ feedbackRouter.get(
   '/get-of-branch/:branch',
   feedbackController.getBranchFeedback
 );
+feedbackRouter.get(
+  '/get-of-booking/:booking',
+  feedbackController.getBookingFeedback
+);
 feedbackRouter.get('/get-by-id/:id', feedbackController.getFeedbackById);
 
 feedbackRouter.use(authentication);

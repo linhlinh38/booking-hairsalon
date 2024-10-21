@@ -41,6 +41,23 @@ async function getBranchFeedback(
   }
 }
 
+async function getBookingFeedback(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  try {
+    const feedBacks = await feedbackService.search({
+      booking: req.params.booking
+    });
+    return res
+      .status(200)
+      .json({ message: 'Get Feedback Successfully', data: feedBacks });
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getFeedbackById(
   req: Request,
   res: Response,
@@ -59,5 +76,6 @@ async function getFeedbackById(
 export default {
   createFeedback,
   getBranchFeedback,
-  getFeedbackById
+  getFeedbackById,
+  getBookingFeedback
 };
