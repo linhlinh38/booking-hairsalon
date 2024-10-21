@@ -35,11 +35,11 @@ const scheduleSchema = mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Booking'
     },
-    court: {
+    court: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Court',
       required: false
-    },
+    }],
     stylist: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Stylist',
@@ -49,7 +49,7 @@ const scheduleSchema = mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Service',
-        required: true
+        required: false
       }
     ]
   },

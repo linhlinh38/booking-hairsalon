@@ -28,7 +28,7 @@ export const createScheduleSchema = z.object({
     )
     .optional(),
   slots: z.array(z.string()).min(1, 'Slots must have at least 1'),
-  court: z.string()
+  court: z.array(z.string())
 });
 
 export const createTransactionSchema = z.object({
@@ -69,7 +69,7 @@ export const createBookingSchema = z.object({
             message: 'End date must be a valid date (YYYY-MM-DD)'
           }
         ),
-      court: z.string()
+      court: z.array(z.string())
     }),
     schedule: createScheduleSchema.optional(),
     transaction: createTransactionSchema.optional()
