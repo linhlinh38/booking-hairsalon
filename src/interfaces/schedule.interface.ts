@@ -11,7 +11,7 @@ export interface ISchedule {
   endTime: string;
   date: string;
   booking?: string | IBooking;
-  court?: string[] | ICourt[];
+  court?: any;
   stylist: string | IStylist;
   services?: string[] | IService[];
   status: string;
