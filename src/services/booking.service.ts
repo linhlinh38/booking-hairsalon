@@ -340,13 +340,13 @@ class BookingService extends BaseService<IBooking> {
         }
       })
       .populate({
-        path: 'feedbacks'
+        path: 'feedback'
       });
     return booking;
   }
 
   async getAllBookingDetailOfCustomer(customerId: string) {
-    const booking = await bookingModel.find({ customer: customerId }).populate('feedbacks');
+    const booking = await bookingModel.find({ customer: customerId }).populate('feedback');
 
     const mapBooking = Promise.all(
       await booking.map(async (item) => {
