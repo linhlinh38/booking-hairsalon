@@ -144,7 +144,7 @@ async function updateBookingStatus(req: AuthRequest, res: Response) {
 
 async function getBookingById(req: Request, res: Response, next: NextFunction) {
   try {
-    const booking = await bookingModel.findById(req.params.id).populate('feedbacks');
+    const booking = await bookingModel.findById(req.params.id).populate('feedbacks court');
     return res
       .status(200)
       .json({ message: 'Get booking success', data: {booking}});
