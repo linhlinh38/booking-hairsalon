@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import { MailerSend } from 'mailersend';
-import Logging from '../utils/Logging';
 
 dotenv.config();
 

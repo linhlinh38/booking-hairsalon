@@ -45,16 +45,25 @@ const bookingSchema = mongoose.Schema(
       ref: 'Customer',
       required: true
     },
-    court: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Court',
-      required: false
-    }],
+    court: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Court',
+        required: false
+      }
+    ],
     branch: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Branch',
       required: true
-    }
+    },
+    feedbacks: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Feedback',
+        required: false
+      }
+    ]
   },
   {
     timestamps: true

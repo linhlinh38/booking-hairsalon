@@ -1,5 +1,6 @@
 import { IBranch } from './branch.interface';
 import { ICourt } from './court.interface';
+import { IFeedback } from './feedback.interface';
 import { IUser } from './user.interface';
 
 export interface IBooking {
@@ -14,6 +15,7 @@ export interface IBooking {
   status: string;
   court?: string | ICourt;
   branch: string | IBranch;
+  feedbacks: string[];
   imageQR?: Express.Multer.File | string;
   customer?: string | IUser;
   createdAt?: string;

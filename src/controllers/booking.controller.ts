@@ -16,6 +16,7 @@ import { sendBookingBillEmail } from '../services/mail.service';
 import { ITransaction } from '../interfaces/transaction.interface';
 import { transactionService } from '../services/transaction.service';
 import { ADMIN_ID } from '../utils/constants';
+import bookingModel from '../models/booking.model';
 
 async function createBooking(
   req: AuthRequest,
@@ -66,7 +67,7 @@ async function createCompetionBooking(
 }
 
 async function getAllBooking(req: Request, res: Response) {
-  const booking = await bookingService.getAll();
+  const booking = await bookingModel.find({}).populate('feedbacks');
   return res
     .status(200)
     .json({ message: 'Get all booking success', data: booking });
@@ -143,10 +144,10 @@ async function updateBookingStatus(req: AuthRequest, res: Response) {
 
 async function getBookingById(req: Request, res: Response, next: NextFunction) {
   try {
-    const booking = await bookingService.getById(req.params.id);
+    const booking = await bookingModel.findById(req.params.id).populate('feedbacks');
     return res
       .status(200)
-      .json({ message: 'Get booking success', data: booking });
+      .json({ message: 'Get booking success', data: {booking}});
   } catch (error) {
     next(error);
   }

@@ -5,7 +5,7 @@ import feedbackModel from '../models/feedback.model';
 import { BaseService } from './base.service';
 import { bookingService } from './booking.service';
 import { BookingStatusEnum } from '../utils/enums';
-import { ObjectId } from 'mongoose';
+import bookingModel from '../models/booking.model';
 
 class FeedbackService extends BaseService<IFeedback> {
   constructor() {
@@ -28,7 +28,7 @@ class FeedbackService extends BaseService<IFeedback> {
     if (feedBackExist.length > 0)
       throw new BadRequestError('Feedback already exists');
 
-    const booking = await bookingService.getById(feedBack.booking as string);
+    const booking = await bookingModel.findById(feedBack.booking as string);
     if (!booking || booking.status !== BookingStatusEnum.DONE)
       throw new BadRequestError('Booking invalid');
 
@@ -42,6 +42,10 @@ class FeedbackService extends BaseService<IFeedback> {
     }
 
     const savedFeedback = await this.model.create(feedBack);
+    await bookingModel.findByIdAndUpdate(
+      booking._id,
+      { $addToSet: { feedbacks: savedFeedback._id } }
+    );
     return savedFeedback;
   }
 }
