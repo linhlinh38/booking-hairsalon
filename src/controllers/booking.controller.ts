@@ -67,7 +67,7 @@ async function createCompetionBooking(
 }
 
 async function getAllBooking(req: Request, res: Response) {
-  const booking = await bookingModel.find({}).populate('feedbacks');
+  const booking = await bookingModel.find({}).populate('feedback');
   return res
     .status(200)
     .json({ message: 'Get all booking success', data: booking });
@@ -144,7 +144,7 @@ async function updateBookingStatus(req: AuthRequest, res: Response) {
 
 async function getBookingById(req: Request, res: Response, next: NextFunction) {
   try {
-    const booking = await bookingModel.findById(req.params.id).populate('feedbacks court');
+    const booking = await bookingModel.findById(req.params.id).populate('feedback court');
     return res
       .status(200)
       .json({ message: 'Get booking success', data: {booking}});

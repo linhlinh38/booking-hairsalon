@@ -57,13 +57,12 @@ const bookingSchema = mongoose.Schema(
       ref: 'Branch',
       required: true
     },
-    feedbacks: [
+    feedback: 
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Feedback',
         required: false
       }
-    ]
   },
   {
     timestamps: true

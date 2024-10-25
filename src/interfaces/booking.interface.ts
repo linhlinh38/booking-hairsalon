@@ -15,7 +15,7 @@ export interface IBooking {
   status: string;
   court?: string | ICourt;
   branch: string | IBranch;
-  feedbacks: string[];
+  feedback: string;
   imageQR?: Express.Multer.File | string;
   customer?: string | IUser;
   createdAt?: string;

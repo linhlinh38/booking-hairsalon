@@ -44,7 +44,7 @@ class FeedbackService extends BaseService<IFeedback> {
     const savedFeedback = await this.model.create(feedBack);
     await bookingModel.findByIdAndUpdate(
       booking._id,
-      { $addToSet: { feedbacks: savedFeedback._id } }
+      { feedback: savedFeedback._id }
     );
     return savedFeedback;
   }
