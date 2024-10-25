@@ -30,6 +30,11 @@ bookingRouter.get(
   bookingController.getBookingByStatus
 );
 bookingRouter.put(
+  '/done/:id',
+  Author([RoleEnum.MANAGER, RoleEnum.STAFF]),
+  bookingController.doneBooking
+);
+bookingRouter.put(
   '/UpdateBookingAfterPayment/:bookingId',
   bookingController.updateBookingAfterPayment
 );
@@ -45,11 +50,7 @@ bookingRouter.get(
 );
 bookingRouter.get('/:id', bookingController.getBookingById);
 bookingRouter.post('/cancel/:id', bookingController.cancelBooking);
-bookingRouter.put(
-  '/done/:id',
-  Author([RoleEnum.MANAGER, RoleEnum.STAFF]),
-  bookingController.doneBooking
-);
+
 bookingRouter.post('/search', bookingController.searchBooking);
 
 export default bookingRouter;

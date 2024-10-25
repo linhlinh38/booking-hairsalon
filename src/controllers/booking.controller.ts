@@ -17,6 +17,7 @@ import { ITransaction } from '../interfaces/transaction.interface';
 import { transactionService } from '../services/transaction.service';
 import { ADMIN_ID } from '../utils/constants';
 import bookingModel from '../models/booking.model';
+import scheduleModel from '../models/schedule.model';
 
 async function createBooking(
   req: AuthRequest,
@@ -207,6 +208,7 @@ async function cancelBooking(req: Request, res: Response, next: NextFunction) {
 
 async function doneBooking(req: Request, res: Response, next: NextFunction) {
   try {
+    
     const booking = await bookingService.getById(req.params.id);
     if (!booking || booking.status !== BookingStatusEnum.BOOKED)
       return res.status(400).json({ message: 'Booking cannot change to done' });
@@ -220,14 +222,14 @@ async function doneBooking(req: Request, res: Response, next: NextFunction) {
     }
     const schedules = await scheduleService.search({ booking: booking._id });
 
-    await bookingService.update(booking._id, {
+    await bookingModel.findByIdAndUpdate(booking._id, {
       status: BookingStatusEnum.DONE,
       endDate: today.toString()
     });
 
     if (schedules.length > 0) {
       schedules.map(async (schedule) => {
-        return await scheduleService.update(schedule._id, {
+        return await scheduleModel.findByIdAndUpdate(schedule._id, {
           status: ScheduleStatusEnum.DONE
         });
       });
