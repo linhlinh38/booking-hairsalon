@@ -49,14 +49,13 @@ class BookingService extends BaseService<IBooking> {
     ) {
       throw new Error('Start date must be before or equal to end date');
     }
-    booking.court.map(async (c) => {
+    for (const c of booking.court) {
       const court = await courtService.getById(c as string);
-      console.log('court', court);
 
       if (!court) throw new NotFoundError('Court not found');
       if (court.status === CourtStatusEnum.TERMINATION)
         throw new BadRequestError('Court is Termination');
-    });
+    }
 
     if (booking.type !== BookingTypeEnum.FLEXIBLE_SCHEDULE) {
       const checkSchedule = await scheduleModel.find({
@@ -140,7 +139,7 @@ class BookingService extends BaseService<IBooking> {
         status: ScheduleStatusEnum.PENDING
       };
 
-      await scheduleService.create(newSchedule);
+      const schedulere = await scheduleService.create(newSchedule);
     }
 
     const transactionDTO: ITransaction = {
@@ -169,6 +168,8 @@ class BookingService extends BaseService<IBooking> {
       await this.update(bookingId, updateData);
       return true;
     } catch (error) {
+      console.log(error);
+
       throw new ServerError(error);
     }
   }

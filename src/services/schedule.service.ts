@@ -56,7 +56,7 @@ class ScheduleService extends BaseService<ISchedule> {
 
   async beforeCreate(data: ISchedule): Promise<void> {
     const checkSchedule = await scheduleModel.find({
-      court: data.court,
+      stylist: data.stylist,
       slots: { $in: data.slots },
       date: data.date,
       status: {
