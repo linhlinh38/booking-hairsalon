@@ -34,6 +34,7 @@ class ScheduleService extends BaseService<ISchedule> {
           path: 'customer'
         }
       })
+      .populate('stylist')
       .populate({
         path: 'court',
         populate: {
