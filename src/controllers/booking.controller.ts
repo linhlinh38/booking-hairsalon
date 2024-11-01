@@ -145,10 +145,12 @@ async function updateBookingStatus(req: AuthRequest, res: Response) {
 
 async function getBookingById(req: Request, res: Response, next: NextFunction) {
   try {
-    const booking = await bookingModel.findById(req.params.id).populate('feedback court');
+    const booking = await bookingModel
+      .findById(req.params.id)
+      .populate('feedback court');
     return res
       .status(200)
-      .json({ message: 'Get booking success', data: {booking}});
+      .json({ message: 'Get booking success', data: { booking } });
   } catch (error) {
     next(error);
   }
@@ -208,7 +210,6 @@ async function cancelBooking(req: Request, res: Response, next: NextFunction) {
 
 async function doneBooking(req: Request, res: Response, next: NextFunction) {
   try {
-    
     const booking = await bookingService.getById(req.params.id);
     if (!booking || booking.status !== BookingStatusEnum.BOOKED)
       return res.status(400).json({ message: 'Booking cannot change to done' });

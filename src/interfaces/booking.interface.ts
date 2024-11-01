@@ -13,7 +13,7 @@ export interface IBooking {
   startDate: string;
   endDate: string;
   status: string;
-  court?: string | ICourt;
+  court?: any;
   branch: string | IBranch;
   feedback: string;
   imageQR?: Express.Multer.File | string;

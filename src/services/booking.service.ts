@@ -49,11 +49,14 @@ class BookingService extends BaseService<IBooking> {
     ) {
       throw new Error('Start date must be before or equal to end date');
     }
+    booking.court.map(async (c) => {
+      const court = await courtService.getById(c as string);
+      console.log('court', court);
 
-    const court = await courtService.getById(booking.court as string);
-    if (!court) throw new NotFoundError('Court not found');
-    if (court.status === CourtStatusEnum.TERMINATION)
-      throw new BadRequestError('Court is Termination');
+      if (!court) throw new NotFoundError('Court not found');
+      if (court.status === CourtStatusEnum.TERMINATION)
+        throw new BadRequestError('Court is Termination');
+    });
 
     if (booking.type !== BookingTypeEnum.FLEXIBLE_SCHEDULE) {
       const checkSchedule = await scheduleModel.find({
@@ -85,6 +88,7 @@ class BookingService extends BaseService<IBooking> {
     };
 
     booking = await bookingModel.create(newBooking);
+    console.log('booking', booking);
 
     if (booking.type === BookingTypeEnum.PERMANENT_SCHEDULE) {
       const allDates = await this.calculateSchedule(
@@ -346,7 +350,9 @@ class BookingService extends BaseService<IBooking> {
   }
 
   async getAllBookingDetailOfCustomer(customerId: string) {
-    const booking = await bookingModel.find({ customer: customerId }).populate('feedback');
+    const booking = await bookingModel
+      .find({ customer: customerId })
+      .populate('feedback');
 
     const mapBooking = Promise.all(
       await booking.map(async (item) => {
