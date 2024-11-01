@@ -60,7 +60,7 @@ class BookingService extends BaseService<IBooking> {
 
     if (booking.type !== BookingTypeEnum.FLEXIBLE_SCHEDULE) {
       const checkSchedule = await scheduleModel.find({
-        court: schedule.court,
+        stylist: schedule.stylist,
         slots: { $in: schedule.slots },
         date: schedule.date,
         status: {
