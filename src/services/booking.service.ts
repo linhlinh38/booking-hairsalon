@@ -136,6 +136,7 @@ class BookingService extends BaseService<IBooking> {
         booking: booking._id,
         stylist: schedule.stylist,
         services: schedule.services,
+        court: schedule.court,
         status: ScheduleStatusEnum.PENDING
       };
 
